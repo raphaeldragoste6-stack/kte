@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- Couleur et styles -->
+  <defs>
+    <style>
+      .blue-main { fill: #1C3B8B; }
+      .red-main { fill: #E31B23; }
+      .red-stroke { fill: none; stroke: #E31B23; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- Fleche Nord du Globe -->
+  <polygon class="blue-main" points="250,20 238,60 262,60" />
+
+  <!-- Arcs superieurs du Globe (Bleu) -->
+  <path class="blue-main" d="M 238,60 C 130,65 60,150 60,270 C 60,310 68,340 82,365 L 102,350 C 90,328 83,300 83,270 C 83,165 145,88 238,82 Z" />
+  <path class="blue-main" d="M 262,60 C 370,65 440,150 440,270 C 440,290 436,310 430,330 L 452,342 C 459,319 463,295 463,270 C 463,165 401,88 262,82 Z" />
+
+  <!-- Graphique a barres (4 Colonnes) -->
+  <!-- Barre 1 (Bleue) -->
+  <rect class="blue-main" x="133" y="200" width="34" height="96" rx="2" />
+  <!-- Barre 2 (Rouge) -->
+  <rect class="red-main" x="178" y="150" width="34" height="146" rx="2" />
+  <!-- Barre 3 (Rouge) -->
+  <rect class="red-main" x="223" y="102" width="34" height="194" rx="2" />
+  <!-- Barre 4 (Bleue) -->
+  <rect class="blue-main" x="268" y="52" width="36" height="244" rx="2" />
+
+  <!-- Ellipse / Anneau orbital Rouge -->
+  <path class="red-main" d="M 10,320 C 10,320 140,350 310,250 C 420,185 490,110 495,125 C 500,140 430,225 295,295 C 145,368 10,320 10,320 Z" />
+
+  <!-- Fleche Sud du Globe -->
+  <polygon class="blue-main" points="250,480 238,440 262,440" />
+
+  <!-- Arc inferieur du Globe (Bleu) -->
+  <path class="blue-main" d="M 140,418 C 172,435 210,442 250,442 C 290,442 328,435 360,418 L 350,400 C 322,414 288,420 250,420 C 212,420 178,414 150,400 Z" />
+
+  <!-- Texte KTE (Futuriste / Rouge) -->
+  <g transform="translate(15, 345)">
+    <!-- K -->
+    <path class="red-main" d="M 0,0 L 22,0 L 22,22 L 40,0 L 70,0 L 45,28 L 72,60 L 42,60 L 22,34 L 22,60 L 0,60 Z" />
+    <polygon class="red-main" points="0,0 22,0 22,12 12,12" />
+    <!-- T -->
+    <path class="red-main" d="M 80,0 L 155,0 L 155,18 L 128,18 L 128,60 L 107,60 L 107,18 L 80,18 Z" />
+    <!-- E -->
+    <path class="red-main" d="M 165,0 L 240,0 L 240,18 L 187,18 L 187,24 L 230,24 L 230,38 L 187,38 L 187,44 L 240,44 L 240,60 L 165,60 Z" />
+  </g>
+
+  <!-- Texte SARL (Outline / Rouge) -->
+  <g transform="translate(270, 368)">
+    <!-- S -->
+    <path class="red-stroke" d="M 30,2 C 10,2 2,10 2,18 C 2,28 15,28 25,32 C 35,36 35,46 22,46 C 10,46 4,38 4,38" />
+    <!-- A -->
+    <path class="red-stroke" d="M 45,48 L 62,4 L 78,48 M 52,32 L 72,32" />
+    <!-- R -->
+    <path class="red-stroke" d="M 90,48 L 90,4 M 90,4 L 112,4 C 122,4 122,22 112,22 L 90,22 M 104,22 L 120,48" />
+    <!-- L -->
+    <path class="red-stroke" d="M 132,4 L 132,48 L 155,48" />
+  </g>
+</svg>
