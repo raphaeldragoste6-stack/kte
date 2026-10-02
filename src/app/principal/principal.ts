@@ -6,10 +6,12 @@ export interface Product {
   id: number;
   name: string;
   price: number;
-  image: string;
+  images: string[]; // Tableau de photos pour le produit
+  image?: string;   // Propriété optionnelle pour compatibilité
   ram?: string;
   rom?: string;
   camera?: string;
+  description?: string;
 }
 
 @Component({
@@ -29,12 +31,19 @@ export class Principal implements OnInit, OnDestroy {
   private timer2: any;
   private popupCount: number = 0; // Compteur d'affichages
 
+  // Suivi de l'index de la photo active pour chaque produit (clé: id du produit, valeur: index de l'image)
+  selectedImageIndex: { [productId: number]: number } = {};
+
   products: Product[] = [
     {
       id: 1,
       name: 'iPhone 14 Pro Max 256GB - kTE SARL',
       price: 650000,
-      image: 'image/ktes.svg',
+      images: [
+        'image/ktes.svg',
+        'image/ktes-2.svg',
+        'image/ktes-3.svg'
+      ],
       ram: '6 Go',
       rom: '256 Go',
       camera: '48 MP'
@@ -43,7 +52,10 @@ export class Principal implements OnInit, OnDestroy {
       id: 2,
       name: 'Smartphone Ultra Caméra Pro HD',
       price: 180000,
-      image: 'image/ktes.svg',
+      images: [
+        'image/ktes.svg',
+        'image/ktes-2.svg'
+      ],
       ram: '8 Go',
       rom: '128 Go',
       camera: '108 MP'
@@ -52,13 +64,20 @@ export class Principal implements OnInit, OnDestroy {
       id: 3,
       name: 'Écran Tactile Interactif 86" 4K UHD',
       price: 1250000,
-      image: 'image/ktes.svg',
+      images: [
+        'image/ktes.svg'
+      ],
       ram: '8 Go',
       rom: '64 Go'
     }
   ];
 
   ngOnInit(): void {
+    // Initialiser l'index d'image sélectionnée à 0 pour chaque produit
+    this.products.forEach(p => {
+      this.selectedImageIndex[p.id] = 0;
+    });
+
     // Premier affichage après 3 secondes (3 000 ms)
     this.timer1 = setTimeout(() => {
       this.triggerPopup();
@@ -100,6 +119,38 @@ export class Principal implements OnInit, OnDestroy {
 
   selectTab(tab: string): void {
     this.selectedTab = tab;
+  }
+
+  // --- Gestion de la galerie d'images par produit ---
+
+  // Obtenir l'image active pour un produit donné
+  getActiveImage(product: Product): string {
+    const images = product.images && product.images.length > 0 
+      ? product.images 
+      : [product.image || 'image/ktes.svg'];
+    const index = this.selectedImageIndex[product.id] || 0;
+    return images[index] || images[0];
+  }
+
+  // Sélectionner une image spécifique
+  selectProductImage(productId: number, imageIndex: number): void {
+    this.selectedImageIndex[productId] = imageIndex;
+  }
+
+  // Passer à l'image suivante
+  nextProductImage(product: Product, event?: Event): void {
+    if (event) event.stopPropagation(); // Évite le déclenchement d'autres événements au clic
+    const total = product.images?.length || 1;
+    const current = this.selectedImageIndex[product.id] || 0;
+    this.selectedImageIndex[product.id] = (current + 1) % total;
+  }
+
+  // Passer à l'image précédente
+  prevProductImage(product: Product, event?: Event): void {
+    if (event) event.stopPropagation();
+    const total = product.images?.length || 1;
+    const current = this.selectedImageIndex[product.id] || 0;
+    this.selectedImageIndex[product.id] = (current - 1 + total) % total;
   }
 
   orderOnWhatsApp(product: Product): void {
