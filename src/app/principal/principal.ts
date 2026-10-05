@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Header } from '../header/header';
+import { Footer } from '../footer/footer';
 
 export interface Product {
   id: number;
@@ -16,7 +17,7 @@ export interface Product {
 
 @Component({
   selector: 'app-principal',
-  imports: [CommonModule, Header],
+  imports: [CommonModule, Header, Footer],
   templateUrl: './principal.html',
   styleUrl: './principal.css'
 })
@@ -35,41 +36,163 @@ export class Principal implements OnInit, OnDestroy {
   selectedImageIndex: { [productId: number]: number } = {};
 
   products: Product[] = [
+
+
+
+
+
     {
       id: 1,
-      name: 'iPhone 14 Pro Max 256GB - kTE SARL',
+      name: 'Tenda',
+      price: 1250000,
+      images: [
+        'image/kte4.jpeg',
+         'image/kt4.jpeg'
+      ],
+      ram: '8 Go',
+      rom: '64 Go'
+    },
+
+
+    {
+      id: 2,
+      name: 'HDMI 4K UHD',
+      price: 10000,
+      images: [
+        'image/kte6.jpeg'
+      ],
+      ram: '8 Go',
+      rom: '64 Go'
+    },
+
+
+
+
+     {
+      id: 3,
+      name: 'HIKVISION DS-2CD2043G0-I 4MP',
+      price: 1250000,
+      images: [
+        'image/kt3.jpeg',
+        'image/kt8.jpeg'
+      ],
+      ram: '8 Go',
+      rom: '64 Go'
+    },
+
+
+
+
+    {
+      id: 4,
+      name: 'CLÉ USB 3.0 - kTE SARL',
       price: 650000,
       images: [
-        'image/ktes.svg',
-        'image/ktes-2.svg',
-        'image/ktes-3.svg'
+        'image/kte21.jpeg',
+        'image/kte2111.jpeg'
       ],
       ram: '6 Go',
       rom: '256 Go',
       camera: '48 MP'
     },
     {
-      id: 2,
-      name: 'Smartphone Ultra Caméra Pro HD',
+      id: 5,
+      name: 'Chargeur iphone',
       price: 180000,
       images: [
-        'image/ktes.svg',
-        'image/ktes-2.svg'
+      
+      'image/kteccc.jpeg',
+      'image/ktecccc.jpeg'
+      
+
       ],
       ram: '8 Go',
       rom: '128 Go',
       camera: '108 MP'
     },
-    {
-      id: 3,
-      name: 'Écran Tactile Interactif 86" 4K UHD',
+    
+    
+
+     {
+      id: 6,
+      name: 'caméra HIKVISION DS-2CD2043G0-I 4MP',
       price: 1250000,
       images: [
-        'image/ktes.svg'
+        'image/kt9.jpeg'
+      ],
+      ram: '8 Go',
+      rom: '64 Go'
+    },
+
+
+
+     {
+      id: 7,
+      name: 'UNIVIEW IPC2324SB-DZK-G 2MP',
+      price: 1250000,
+      images: [
+        'image/kte10.jpeg'
+      ],
+      ram: '8 Go',
+      rom: '64 Go'
+    },
+
+
+
+
+
+     {
+      id: 8,
+      name: 'CAMERA HIKVISION DS-2CD2043G0-I 4MP',
+      price: 1250000,
+      images: [
+        'image/kte11.jpeg'
+      ],
+      ram: '8 Go',
+      rom: '64 Go'
+    },
+    
+    
+    
+    
+    
+    {
+      id: 9,
+      name: 'POWER BANK araima 20000 mAh',
+      price: 6000,
+      images: [
+        'image/kte23.jpeg',
+        'image/kte24.jpeg'
+      ],
+      ram: '8 Go',
+      rom: '64 Go'
+    },
+
+
+
+
+     {
+      id: 10,
+      name: 'Chargeur iphone ',
+      price: 2500,
+      images: [
+        'image/kte27.jpeg',
+        'image/kte277.jpeg'
       ],
       ram: '8 Go',
       rom: '64 Go'
     }
+
+
+
+
+    
+    
+
+
+
+
+    
   ];
 
   ngOnInit(): void {

@@ -1,0 +1,234 @@
+
+/* ==========================================
+   SECTION 1: NOS SHOWROOMS
+   ========================================== */
+
+
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+
+
+.showrooms {
+  margin-bottom: 24px;
+}
+
+
+
+.showroom-card {
+  display: flex;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  gap: 12px;
+}
+
+.showroom-info {
+  flex: 1;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #2b3a55;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.showroom-info h3 {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d1b3e;
+}
+
+.showroom-info p {
+  margin: 2px 0;
+  font-size: 11px;
+  color: #555555;
+}
+
+.showroom-image {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+/* Style du conteneur principal ou de la carte */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  color: #ffffff;
+}
+
+/* Style des champs de saisie (inputs) */
+.glass-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Style du bouton */
+.glass-button {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+
+/* Conteneur principal */
+.social-section {
+  background-color: #022a86; /* Fond bleu nuit comme sur l'image */
+  padding: 20px;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.social-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+/* Alignement des icônes */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacement entre les cercles */
+}
+
+/* Style des cercles jaunes */
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #fca311; /* Couleur jaune/orange de Glotelho */
+  color: #03081e; /* Icône en bleu foncé/noir */
+  border-radius: 50%; /* Rend les boutons parfaitement ronds */
+  text-decoration: none;
+  font-size: 18px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Effet au survol */
+.social-btn:hover {
+  transform: scale(1.1);
+  background-color: #e59300;
+}
+
+
+
+
+
+
+
+
+.footer-payment-section {
+  background-color: #03081e;
+  padding: 16px 20px 24px;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.payment-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #d1d5db;
+  margin: 0 0 10px 0;
+}
+
+.payment-methods {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.payment-card {
+  width: 50px;
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Fond specifique par carte comme sur la 2e image */
+.mtn-card {
+  background-color: #ffcc00; /* Jaune MTN */
+}
+
+.orange-card {
+  background-color: #000000; /* Fond noir logo Orange */
+  padding: 4px;
+}
+
+.cash-card {
+  background-color: transparent;
+}
+
+.payment-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+.copyright-text {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+  font-weight: 400;
+}
