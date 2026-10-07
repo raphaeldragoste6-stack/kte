@@ -9,6 +9,11 @@
   z-index: 1000;
 }
 
+.main-header {
+  position: relative;
+  width: 100%;
+}
+
 /* =========================================
    BARRE SUPÉRIEURE (Top Bar)
    ========================================= */
@@ -31,23 +36,16 @@
   color: #333333;
 }
 
-/* Logo stylisé kTE SARL */
+/* Logo kTE SARL */
 .brand-logo {
   display: flex;
   align-items: center;
-  font-weight: 800;
-  font-size: 18px;
 }
 
-.logo-red {
-  color: #d32f2f;
-  margin-right: 2px;
-}
-
-.logo-black {
-  color: #111111;
-  font-size: 12px;
-  font-weight: 700;
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 /* Champ de recherche arrondi */
@@ -80,56 +78,129 @@
 }
 
 /* =========================================
-   BARRE D'ONGLETS ET FILTRER (Tab Bar)
+   MENU NAVIGATION MOBILE
    ========================================= */
-.tab-bar {
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  transition: max-height 0.35s ease-in-out;
+  width: 100%;
+}
+
+.mobile-menu.open {
+  max-height: 800px; /* Augmenté pour accueillir tous les sous-menus dépliés */
+}
+
+.mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Boutons principaux du menu */
+.menu-toggle-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 12px 4px 12px;
-  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.nav-tabs {
+.menu-toggle-btn:hover {
+  background-color: #f8f9fa;
+  color: #d90429;
+}
+
+/* Flèche de sous-menu */
+.arrow {
+  font-size: 11px;
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* =========================================
+   SOUS-MENUS (Caractéristiques & Contact)
+   ========================================= */
+.has-submenu {
+  position: relative;
+  width: 100%;
+}
+
+.submenu {
+  display: flex !important;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  padding: 6px 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.submenu li {
+  padding: 10px 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  border-bottom: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.submenu li:hover {
+  color: #d90429;
+  background-color: #edf2f7;
+}
+
+/* Liens du sous-menu Nous Contacter */
+.contact-link {
   display: flex;
   align-items: center;
-  gap: 16px;
-  overflow-x: auto;
-  white-space: nowrap;
-  /* Masquer la barre de défilement */
-  scrollbar-width: none;
+  gap: 12px;
+  padding: 10px 32px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  transition: background-color 0.2s;
 }
 
-.nav-tabs::-webkit-scrollbar {
-  display: none;
+.contact-link:hover {
+  background-color: #edf2f7;
 }
 
-/* cible */
-.logo-img {
-  height: 40px;
-  width: auto;
-  display: block;
+.contact-link.whatsapp {
+  color: #25d366;
 }
 
+.contact-link.email {
+  color: #ea4335;
+}
 
+.contact-link.phone {
+  color: #007bff;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* =========================================
+   BANDEAU DÉFILANT (Announcement Bar)
+   ========================================= */
 .announcement-bar {
   background-color: #111111;
   color: #ffffff;
@@ -144,7 +215,6 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  /* La durée de 35s garantit un défilement fluide et lisible */
   animation: infinite-scroll 35s linear infinite;
 }
 
@@ -154,7 +224,6 @@
   padding-right: 60px;
 }
 
-/* Animation qui décale exactement de la moitié (le premier bloc complet) */
 @keyframes infinite-scroll {
   0% {
     transform: translateX(0);
@@ -164,7 +233,6 @@
   }
 }
 
-/* Pause au survol du curseur */
 .announcement-bar:hover .marquee-track {
   animation-play-state: paused;
 }

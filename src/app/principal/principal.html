@@ -1,5 +1,6 @@
 <section>
-  <app-header></app-header>
+  <!-- Écoute de l'événement émis lors du clic sur une caractéristique du menu -->
+  <app-header (categorySelected)="openCatalogForCategory($event)"></app-header>
 
   <section class="product-container">
     <!-- Onglets de filtres horizontaux -->
@@ -109,13 +110,68 @@
         <button class="popup-action-btn" (click)="closePopup()">J'ai compris</button>
       </div>
     </div>
-            
 
-          
+    <!-- ==================================================== -->
+    <!-- POP-UP / MODALE DE CATALOGUE DE LA CARACTÉRISTIQUE -->
+    <!-- ==================================================== -->
+    <div class="catalog-modal-overlay" *ngIf="isCatalogOpen" (click)="closeCatalog()">
+      <div class="catalog-modal-content" (click)="$event.stopPropagation()">
+        
+        <!-- En-tête du catalogue -->
+        <div class="catalog-modal-header">
+          <h2>Catalogue : {{ selectedCategory }}</h2>
+          <button class="close-btn" (click)="closeCatalog()">&times;</button>
+        </div>
+
+        <!-- Message si aucun article dans la catégorie -->
+        <div class="empty-catalog" *ngIf="catalogItems.length === 0">
+          <p>Aucun équipement disponible actuellement pour la catégorie {{ selectedCategory }}.</p>
+        </div>
+
+        <!-- Grille des articles du catalogue -->
+        <div class="catalog-grid" *ngIf="catalogItems.length > 0">
+          <div class="catalog-card" *ngFor="let item of catalogItems">
+            
+            <!-- Galerie de photos pour l'équipement -->
+            <div class="catalog-gallery">
+              <img 
+                [src]="item.images[activeImageIndex[item.id] || 0]" 
+                [alt]="item.name" 
+                class="main-catalog-img" 
+              />
+              
+              <!-- Miniatures pour changer de photo si plusieurs photos -->
+              <div class="thumbnails" *ngIf="item.images.length > 1">
+                <img 
+                  *ngFor="let img of item.images; let i = index" 
+                  [src]="img" 
+                  [class.active-thumb]="(activeImageIndex[item.id] || 0) === i"
+                  (click)="setImage(item.id, i)" 
+                />
+              </div>
+            </div>
+
+            <!-- Détails & Prix -->
+            <div class="catalog-details">
+              <h3>{{ item.name }}</h3>
+              <p class="catalog-price">{{ item.price | number }} FCFA</p>
+              <p class="catalog-desc" *ngIf="item.description">{{ item.description }}</p>
+
+              <!-- Bouton Commander WhatsApp -->
+              <a 
+                [href]="'https://wa.me/237656727787?text=' + encodeText('Bonjour KTE SARL, je souhaite commander : ' + item.name + ' (' + item.price + ' FCFA)')" 
+                target="_blank" 
+                class="whatsapp-order-btn">
+                Commander via WhatsApp
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <app-footer></app-footer>
-
-
-
-
+  </section>
 </section>

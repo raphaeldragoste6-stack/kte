@@ -1,9 +1,8 @@
-
 <header class="main-header">
   <!-- Ligne Supérieure : Menu, Logo, Barre de recherche, Profil -->
   <div class="top-bar">
-    <!-- Icone Menu Hamburger -->
-    <button class="icon-btn" aria-label="Menu">
+    <!-- Icône Menu Hamburger -->
+    <button class="icon-btn" aria-label="Menu" (click)="toggleMenu()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="3" y1="6" x2="21" y2="6"></line>
         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -11,26 +10,23 @@
       </svg>
     </button>
 
-    <!-- Logo / Nom kTE SARL -->
+    <!-- Logo KTE SARL -->
     <div class="brand-logo">
-     <a href="#" class="logo-container">
-    <!-- Remplace le chemin "assets/logo-kte.jpeg" par l'emplacement réel de ton fichier -->
-    <img src="/image/ktes.svg" alt="KTE SARL Logo" class="logo-img" />
-  </a>
+      <a href="#" class="logo-container">
+        <img src="/image/ktes.svg" alt="KTE SARL Logo" class="logo-img" />
+      </a>
     </div>
 
     <!-- Champ de recherche -->
     <div class="search-box">
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
         <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65">
-
-        </line>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
       </svg>
       <input type="text" placeholder="Équipement élé..." aria-label="Recherche" />
     </div>
 
-    <!-- Icone Compte Utilisateur -->
+    <!-- Icône Compte Utilisateur -->
     <button class="icon-btn" aria-label="Mon Compte">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -39,31 +35,83 @@
     </button>
   </div>
 
+  <!-- MENU DÉROULANT / NAVIGATION -->
+  <nav class="mobile-menu" [class.open]="isMenuOpen">
+    <ul>
+      <!-- SOUS-MENU CARACTÉRISTIQUES -->
+      <li class="has-submenu">
+        <button class="menu-toggle-btn" (click)="toggleSubMenu()">
+          <span>Caractéristiques</span>
+          <span class="arrow" [class.open]="isSubMenuOpen">&#9662;</span>
+        </button>
+        
+        <ul class="submenu" *ngIf="isSubMenuOpen">
+          <li (click)="selectCategory('RAM')">RAM</li>
+          <li (click)="selectCategory('ROM')">ROM</li>
+          <li (click)="selectCategory('Routeur')">Routeur</li>
+          <li (click)="selectCategory('Modem')">Modem</li>
+          <li (click)="selectCategory('Clé USB')">Clé USB</li>
+        </ul>
+      </li>
 
+      <!-- AUTRES LIENS -->
+      <li>
+        <button class="menu-toggle-btn" (click)="selectCategory('Nouveautés')">
+          <span>Nouveautés</span>
+        </button>
+      </li>
 
+      <!-- SOUS-MENU NOUS CONTACTER -->
+      <li class="has-submenu">
+        <button class="menu-toggle-btn" (click)="toggleContactMenu()">
+          <span>Nous contacter</span>
+          <span class="arrow" [class.open]="isContactMenuOpen">&#9662;</span>
+        </button>
 
+        <div class="submenu" *ngIf="isContactMenuOpen">
+          <a 
+            href="https://wa.me/237656727787?text=Bonjour%20KTE%20SARL,%20j'ai%20une%20question" 
+            target="_blank" 
+            class="contact-link whatsapp"
+            (click)="closeMenu()"
+          >
+            <i class="fab fa-whatsapp"></i> Via WhatsApp
+          </a>
 
- 
+          <a 
+            href="mailto:contact@ktesarl.cm?subject=Demande%20d'information" 
+            class="contact-link email"
+            (click)="closeMenu()"
+          >
+            <i class="fas fa-envelope"></i> Via Email
+          </a>
 
+          <a 
+            href="tel:+237656727787" 
+            class="contact-link phone"
+            (click)="closeMenu()"
+          >
+            <i class="fas fa-phone-alt"></i> Via Appel
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
 
-
+  <!-- BANDEAU DÉFILANT -->
   <div class="announcement-bar">
-  <div class="marquee-track">
-    <!-- Premier bloc de messages -->
-    <div class="marquee-content">
-      <span>🔥 Offre Spéciale kTE SARL : Livraison rapide sur tous les équipements !</span>
-      <span>📞 WhatsApp / Tel : +237 600 00 00 00</span>
-      <span>⚡ Matériel informatique et électronique de pointe au meilleur prix !</span>
-    </div>
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>🔥 Offre Spéciale kTE SARL : Livraison rapide sur tous les équipements !</span>
+        <span>📞 WhatsApp / Tel : +237 6 56 72 77 87</span>
+        <span>⚡ Matériel informatique et électronique de pointe au meilleur prix !</span>
+      </div>
 
-    <!-- Deuxième bloc identique pour créer la boucle infinie sans coupure -->
-    <div class="marquee-content" aria-hidden="true">
-      <span>🔥 Offre Spéciale kTE SARL : Livraison rapide sur tous les équipements !</span>
-      <span>📞 WhatsApp / Tel : +237 600 00 00 00</span>
-      <span>⚡ Matériel informatique et électronique de pointe au meilleur prix !</span>
+      <div class="marquee-content" aria-hidden="true">
+        <span>🔥 Offre Spéciale kTE SARL : Livraison rapide sur tous les équipements !</span>
+        <span>📞 WhatsApp / Tel : +237 6 56 72 77 87</span>
+        <span>⚡ Matériel informatique et électronique de pointe au meilleur prix !</span>
+      </div>
     </div>
   </div>
-</div>
-
-
 </header>
