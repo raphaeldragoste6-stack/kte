@@ -1,6 +1,10 @@
 <section>
   <!-- Écoute de l'événement émis lors du clic sur une caractéristique du menu -->
-  <app-header (categorySelected)="openCatalogForCategory($event)"></app-header>
+  <app-header
+   (categorySelected)="openCatalogForCategory($event)"
+   (searchChanged)="onSearchQueryChange($event)">
+  >
+  </app-header>  
 
   <section class="product-container">
     <!-- Onglets de filtres horizontaux -->

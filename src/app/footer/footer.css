@@ -63,7 +63,7 @@
 
 .showroom-image {
   width: 90px;
-  height: 90px;
+  height: 50px;
   flex-shrink: 0;
   border-radius: var(--radius-sm);
   overflow: hidden;

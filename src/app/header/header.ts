@@ -13,6 +13,13 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
  @Output() categorySelected = new EventEmitter<string>();
+ @Output() searchChanged = new EventEmitter<string>(); // Nouvel émetteur de recherche
+onSearchChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchChanged.emit(input.value);
+  }
+
+
 
   isMenuOpen: boolean = false;
   isSubMenuOpen: boolean = false;
